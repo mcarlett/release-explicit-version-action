@@ -18,11 +18,11 @@ echo "Prepare release with version $RELEASE_VERSION and set development version 
 mvn -B -DskipTests -Darguments="-DskipTests -DremoteTagging=false" release:prepare -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVEL_VERSION
 echo "Perform release"
 mvn -DskipTests -Darguments="-DskipTests -Dmaven.deploy.skip=true" release:perform
-echo "Rebase branch $RELEASE_BRANCH"
+echo "Checkout branch $RELEASE_BRANCH"
 git checkout $RELEASE_BRANCH
-git pull $RELEASE_BRANCH
-git rebase $TAG
-echo "Create release tag $TAG"
-git push $DEVEL_BRANCH $RELEASE_BRANCH $TAG
+git pull origin $RELEASE_BRANCH
+echo "Create tag $TAG on $RELEASE_BRANCH"
+git tag -a -m "Release tag" $TAG
+git push --follow-tags
 echo "::set-output name=generated-tag::$(echo $TAG)"
 echo "Done!"
