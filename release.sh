@@ -3,12 +3,6 @@
 # Exit whenever a command fails
 set -e
 
-RELEASE_VERSION=$1
-DEVEL_VERSION=$2
-TAG=v$RELEASE_VERSION
-DEV_BRANCH=develop
-RELEASE_BRANCH=master
-
 TAG=v$RELEASE_VERSION
 echo "Checkout $DEV_BRANCH"
 git checkout $DEV_BRANCH
