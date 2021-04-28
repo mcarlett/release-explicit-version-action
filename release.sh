@@ -4,6 +4,9 @@
 set -e
 
 TAG=v$RELEASE_VERSION
+
+env
+
 echo "Checkout $DEV_BRANCH"
 git checkout $DEV_BRANCH
 echo "Pull upstream"
