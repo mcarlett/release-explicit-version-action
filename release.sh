@@ -7,6 +7,8 @@ TAG=v$RELEASE_VERSION
 
 env
 
+echo "Fetch remote"
+git fetch
 echo "Checkout $DEVEL_BRANCH"
 git checkout $DEVEL_BRANCH
 echo "Pull upstream"
