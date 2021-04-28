@@ -30,6 +30,6 @@ runs:
       env:
         RELEASE_VERSION: ${{ inputs.release-version }}
         DEVEL_VERSION: ${{ inputs.devel-version }}
-        TAG: v${{ inputs.release-version }
+        TAG: v${{ inputs.release-version }}
         DEV_BRANCH: ${{ inputs.devel-branch }}
-        MASTER_BRANCH: ${{ inputs.release-branch }}
+        RELEASE_BRANCH: ${{ inputs.release-branch }}
