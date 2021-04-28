@@ -15,9 +15,9 @@ git checkout $DEVEL_BRANCH
 echo "Pull"
 git pull origin $DEVEL_BRANCH
 echo "Prepare release with version $RELEASE_VERSION and set development version $DEVEL_VERSION"
-mvn -B release:prepare -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVEL_VERSION -DskipTests
+mvn -B -DskipTests -Darguments=-DskipTests release:prepare -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVEL_VERSION
 echo "Perform release"
-mvn release:perform
+mvn -DskipTests -Darguments="-DskipTests -Dmaven.deploy.skip=true" release:perform
 echo "Rebase branch $RELEASE_BRANCH"
 git checkout $RELEASE_BRANCH
 git pull $RELEASE_BRANCH
