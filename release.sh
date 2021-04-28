@@ -9,9 +9,10 @@ env
 
 echo "Fetch remote"
 git fetch
-git fetch upstream
 echo "Checkout $DEVEL_BRANCH"
 git checkout $DEVEL_BRANCH
+echo "Fetch remote"
+git fetch upstream
 echo "Pull upstream"
 git pull upstream $DEVEL_BRANCH
 echo "Prepare release with version $RELEASE_VERSION and set development version $DEVEL_VERSION"
