@@ -1,0 +1,35 @@
+name: 'Release Maven explicit version'
+description: 'Create a Maven release using release maven plugin (required) and using input as release version'
+inputs:
+  release-version:
+    description: 'Release version to create'
+    required: true
+  devel-version:
+    description: 'Development version generated after execution'
+    required: true
+  devel-branch:
+    description: 'Development branch'
+    required: true
+    default: $GITHUB_REF
+  release-branch:
+    description: 'Development branch'
+    required: true
+    default: 'master'
+outputs:
+  generated-tag:
+    description: "Generated version tag"
+    value: ${{ steps.create-release.outputs.generated-tag }}
+runs:
+  using: "composite"
+  steps:
+    - run: echo Generating release ${{ inputs.release-version }}, next dev version ${{ inputs.devel-version }} from branch ${{ inputs.devel-branch }} into ${{ inputs.release-branch }}.
+      shell: bash
+    - id: create-release
+      run: ${{ github.action_path }}/release.sh
+      shell: bash
+      env:
+        RELEASE_VERSION: ${{ inputs.release-version }}
+        DEVEL_VERSION: ${{ inputs.devel-version }}
+        TAG: v${{ inputs.release-version }
+        DEV_BRANCH: ${{ inputs.devel-branch }}
+        MASTER_BRANCH: ${{ inputs.release-branch }}
