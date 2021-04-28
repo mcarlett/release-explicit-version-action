@@ -19,6 +19,7 @@ mvn -B -DskipTests -Darguments="-DskipTests" -Dtag=$TAG release:prepare -Dreleas
 echo "Perform release"
 mvn -DskipTests -Darguments="-DskipTests -Dmaven.deploy.skip=true" release:perform
 echo "Checkout branch $RELEASE_BRANCH"
+git fetch
 git checkout $RELEASE_BRANCH
 git pull origin $RELEASE_BRANCH
 echo "Rebase $TAG into $RELEASE_BRANCH"
