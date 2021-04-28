@@ -9,6 +9,7 @@ env
 
 echo "Fetch remote"
 git fetch
+git fetch upstream
 echo "Checkout $DEVEL_BRANCH"
 git checkout $DEVEL_BRANCH
 echo "Pull upstream"
