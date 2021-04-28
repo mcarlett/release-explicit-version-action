@@ -10,9 +10,11 @@ inputs:
   devel-branch:
     description: 'Development branch'
     required: true
+    default: $GITHUB_REF
   release-branch:
     description: 'Development branch'
     required: true
+    default: 'master'
 outputs:
   generated-tag:
     description: "Generated version tag"
