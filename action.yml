@@ -29,5 +29,5 @@ runs:
         RELEASE_VERSION: ${{ inputs.release-version }}
         DEVEL_VERSION: ${{ inputs.devel-version }}
         TAG: v${{ inputs.release-version }}
-        DEV_BRANCH: ${{ inputs.devel-branch }}
+        DEVEL_BRANCH: ${{ inputs.devel-branch }}
         RELEASE_BRANCH: ${{ inputs.release-branch }}

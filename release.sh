@@ -7,10 +7,10 @@ TAG=v$RELEASE_VERSION
 
 env
 
-echo "Checkout $DEV_BRANCH"
-git checkout $DEV_BRANCH
+echo "Checkout $DEVEL_BRANCH"
+git checkout $DEVEL_BRANCH
 echo "Pull upstream"
-git pull upstream $DEV_BRANCH
+git pull upstream $DEVEL_BRANCH
 echo "Prepare release with version $RELEASE_VERSION and set development version $DEVEL_VERSION"
 mvn -B release:prepare -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVEL_VERSION
 echo "Perform release"
@@ -20,6 +20,6 @@ git checkout $RELEASE_BRANCH
 git pull upstream $RELEASE_BRANCH
 git rebase $TAG
 echo "Create release tag $TAG"
-git push upstream $DEV_BRANCH $RELEASE_BRANCH $TAG
+git push upstream $DEVEL_BRANCH $RELEASE_BRANCH $TAG
 echo "::set-output name=generated-tag::$(echo $TAG)"
 echo "Done!"
