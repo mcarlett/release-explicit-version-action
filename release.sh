@@ -15,7 +15,7 @@ git checkout $DEVEL_BRANCH
 echo "Pull"
 git pull origin $DEVEL_BRANCH
 echo "Prepare release with version $RELEASE_VERSION and set development version $DEVEL_VERSION"
-mvn -B -DskipTests -Darguments="-DskipTests" -Dtag=$TAG release:prepare -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVEL_VERSION
+mvn -B -DskipTests -Darguments="-DskipTests" -DsignTag=true -Dtag=$TAG release:prepare -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVEL_VERSION
 echo "Perform release"
 mvn -DskipTests -Darguments="-DskipTests -Dmaven.deploy.skip=true" release:perform
 echo "Checkout branch $RELEASE_BRANCH"
