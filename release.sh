@@ -21,7 +21,7 @@ git pull origin $DEVEL_BRANCH
 echo "Merge $RELEASE_BRANCH into $DEVEL_BRANCH"
 git merge $RELEASE_BRANCH -m "Reintegrate master"
 echo "Prepare release with version $RELEASE_VERSION and set development version $DEVEL_VERSION"
-mvn -B -DskipTests -Darguments="-DskipTests" -DpreparationGoals="clean package" -DpushChanges=false -DremoteTagging=false -DsignTag=true -Dtag=$TAG release:prepare -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVEL_VERSION
+mvn -B -DskipTests -Darguments="-DskipTests" -DpreparationGoals="clean package" -DlocalCheckout=true -DsignTag=true -Dtag=$TAG release:prepare -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVEL_VERSION
 echo "Perform release"
 mvn -DskipTests -Darguments="-DskipTests -Dmaven.deploy.skip=true" release:perform
 echo "Checkout branch $RELEASE_BRANCH"
