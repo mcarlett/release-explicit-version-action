@@ -12,12 +12,14 @@ echo "Fetch remote"
 git fetch
 echo "Checkout $RELEASE_BRANCH"
 git checkout $RELEASE_BRANCH
-echo "Pull"
+echo "Pull $RELEASE_BRANCH"
 git pull origin $RELEASE_BRANCH
 echo "Checkout $DEVEL_BRANCH"
 git checkout $DEVEL_BRANCH
-echo "Pull"
+echo "Pull $DEVEL_BRANCH"
 git pull origin $DEVEL_BRANCH
+echo "Merge $RELEASE_BRANCH into $DEVEL_BRANCH"
+git merge $RELEASE_BRANCH -m "Reintegrate master"
 echo "Prepare release with version $RELEASE_VERSION and set development version $DEVEL_VERSION"
 mvn -B -DskipTests -Darguments="-DskipTests" -DpreparationGoals="clean package" -DpushChanges=false -DremoteTagging=false -DsignTag=true -Dtag=$TAG release:prepare -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$DEVEL_VERSION
 echo "Perform release"
